@@ -1,0 +1,17 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+inicio de sesion
+{% endblock title %}
+
+{% block content %}
+<h2>Iniciar sesión</h2>
+<form action="{% url 'login' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}  <!-- Utilizar form.as_p para mostrar los campos -->
+  <br>
+  <input type="submit" value="Enviar">
+</form>
+
+{% endblock content %}

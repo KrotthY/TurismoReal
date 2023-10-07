@@ -1,0 +1,69 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Administración de Usuarios
+{% endblock title %}
+
+{% block content %}
+<!-- vuelve al panel-->
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Panel de Administración</a></li>
+{% endif %}
+<br>
+    <form method="get">
+        <div class="search-wrapper">
+            <input type="text" name="q" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+            <a href="?"><button type="button">Limpiar</button></a>
+        </div>
+    </form>
+    <br><br>
+
+    <div class="datagrid">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>RUT</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <!-- Código para paginación si lo necesitas -->
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for usuario in usuarios %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        <tr class="alt">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.rut }}</td>
+                    <td>{{ usuario.telefono }}</td>
+                    <td>{{ usuario.estado }}</td>
+                    <td>
+                        <form action="{% url 'activa_desactiva_usuario' usuario.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-activar-desactivar">
+                                {% if usuario.estado == 'activo' %}
+                                    Desactivar
+                                {% else %}
+                                    Activar
+                                {% endif %}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

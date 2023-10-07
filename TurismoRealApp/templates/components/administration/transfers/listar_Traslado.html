@@ -1,0 +1,73 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Administración de Traslados
+{% endblock title %}
+
+{% block content %}
+<!-- vuelve al panel-->
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Panel de Administración</a></li>
+{% endif %}
+<br>
+<!-- Barra de búsqueda -->
+<form method="get">
+    <div class="search-wrapper">
+      <input type="text" name="q" placeholder="Buscar...">
+      <button type="submit">Buscar</button>
+      <a href="?"><button type="button">Limpiar</button></a>
+    </div>
+  </form>
+  <br>
+    <a href="{% url 'crear_traslado' %}">
+        <button type="button">Añadir Traslado</button>
+    </a>
+    <br><br>
+
+    <div class="datagrid">
+        <table>
+            <thead>
+                <tr>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <!-- Código para paginación si lo necesitas -->
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for traslado in traslados %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        <tr class="alt">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                    <td>{{ traslado.origen }}</td>
+                    <td>{{ traslado.destino }}</td>
+                    <td>{{ traslado.valor }}</td>
+                    <td>{{ traslado.estado }}</td>
+                    <td><form action="{% url 'activa_desactiva_traslado' traslado.id_traslado %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-activar-desactivar">
+                          {% if traslado.estado == 'activo' %}
+                            Desactivar
+                          {% else %}
+                            Activar
+                          {% endif %}
+                        </button>
+                      </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

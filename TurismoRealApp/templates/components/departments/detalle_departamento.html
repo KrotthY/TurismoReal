@@ -1,0 +1,43 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Galeria de Departamentos
+{% endblock title %}
+
+{% block content %}
+
+<a href="{% url 'galeria_departamentos'%}">Volver</a>
+<br>
+<br>
+
+<h1>{{ departamento.nombre }}</h1>
+<br>
+<div class="imagenes-dpto">
+    {% for imagen in departamento.imagenes.all %}
+        <img src="{{ imagen.imagen.url }}" alt="{{ departamento.nombre }}">
+    {% endfor %}
+</div>
+<br>
+<p><strong>Descripción:</strong> {{ departamento.descripcion }}</p>
+<p><strong>Tarifa Diaria:</strong> ${{ departamento.tarifa_diaria }}</p>
+<br>
+<h3>Dirección:</h3>
+<p><strong>Calle:</strong> {{ departamento.direc.calle }}</p>
+<p><strong>Número:</strong> {{ departamento.direc.numero }}</p>
+<p><strong>Ciudad:</strong> {{ departamento.direc.ciudad }}</p>
+<p><strong>Región:</strong> {{ departamento.direc.region }}</p>
+<br>
+<h3>Servicios Adicionales:</h3>
+<ul>
+    {% for servicio in departamento.servicios.all %}
+        <li>{{ servicio.nombre }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}
+
+
+
+

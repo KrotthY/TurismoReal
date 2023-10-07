@@ -1,0 +1,25 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Panel de Administración
+{% endblock title %}
+
+{% block content %}
+<h1>Bienvenido al Panel de Administración</h1>
+
+<p>Selecciona una acción:</p>
+
+<ul>
+    <li><a href="{% url 'listar_Usuarios' %}">Administra usuarios</a></li>
+    <li><a href="{% url 'listar_Tours' %}">Administra tours</a></li>
+    <li><a href="{% url 'listar_Traslado' %}">Administra traslados</a></li>
+    <li><a href="{% url 'listar_Dpto' %}">Administra departamentos</a></li>
+    <li><a href="{% url 'listar_servicios' %}">Administra servicios</a></li>
+    <li><a href="{% url 'listar_Equipamiento' %}">Administra equipamiento</a></li>
+    <li><a href="{% url 'listar_Reporte' %}">reportes</a></li>
+    
+</ul>
+
+<p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+{% endblock content %}

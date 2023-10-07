@@ -1,0 +1,18 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Creación de Traslado
+{% endblock title %}
+
+{% block content %}
+<h2>Crear un nuevo Traslado</h2>
+<br>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar Traslado</button>
+</form>
+<br>
+<a href="{% url 'listar_Traslado' %}">Volver</a>
+{% endblock content %}

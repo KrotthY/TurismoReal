@@ -1,0 +1,24 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Perfil
+{% endblock title %}
+
+{% block content %}
+<!-- vuelve al panel-->
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Panel de Administración</a></li>
+{% endif %}
+<br>
+<!-- Barra de búsqueda -->
+<form method="get">
+    <div class="search-wrapper">
+      <input type="text" name="q" placeholder="Buscar...">
+      <button type="submit">Buscar</button>
+      <a href="?"><button type="button">Limpiar</button></a>
+    </div>
+  </form>
+  <br>
+
+{% endblock content %}

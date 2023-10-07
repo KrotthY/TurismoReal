@@ -1,0 +1,36 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+departamentos
+{% endblock title %}
+
+{% block content %}
+
+<h1>Galería de Departamentos</h1>
+<br>
+<form method="GET" action="">
+    {{ buscar_form.as_p }}
+    <button type="submit">Buscar</button>
+    <a href="?"><button type="button">Limpiar</button></a>
+</form>
+
+<br>
+<div class="departamento-grid">
+    {% for dpto in departamentos %}
+    <div class="departamento-card">
+        {% for imagen in dpto.imagenes.all %}
+                <img src="{{ imagen.imagen.url }}" alt="{{ dpto.nombre }}">
+            {% endfor %}
+        <a href="{% url 'detalle_departamento' dpto.id_dpto %}">
+            <h3>{{ dpto.nombre }}</h3>
+            <p>{{ dpto.descripcion }}</p>
+            <p>Tarifa Diaria: ${{ dpto.tarifa_diaria }}</p>
+            <p>Ciudad: {{ dpto.direc.ciudad }}</p>
+        </a>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock content %}

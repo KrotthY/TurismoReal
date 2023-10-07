@@ -1,0 +1,3 @@
+.focus-ring-header{
+    --bs-focus-ring-color:rgba(var(--bs-light-rgb), .25)
+}

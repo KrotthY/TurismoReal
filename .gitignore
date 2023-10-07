@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+#  database
+
+
+# Media files (archivos subidos por usuarios, etc.)
+media/
+
+
+# Archivos específicos de IDEs/editores
+.vscode/
+
+# Otros archivos y directorios que podrías querer ignorar
+*.log
+*.pot
+*.db
+staticfiles/
+*.env  
+

@@ -1,0 +1,21 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Perfil
+{% endblock title %}
+
+{% block content %}
+
+<h2>Perfil de {{ user.username }}</h2>
+<br>
+    {% if user %}
+        <p>Nombre de usuario: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <!-- Agrega aquí otros campos de CustomUser -->
+        <p>RUT: {{ user.rut }}</p>
+        <p>Teléfono: {{ user.telefono }}</p>
+    {% endif %}
+
+
+{% endblock content %}

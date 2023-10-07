@@ -1,0 +1,73 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Administración de Servicios
+{% endblock title %}
+
+{% block content %}
+<!-- vuelve al panel-->
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Panel de Administración</a></li>
+{% endif %}
+<br>
+<!-- Barra de búsqueda -->
+<form method="get">
+  <div class="search-wrapper">
+    <input type="text" name="q" placeholder="Buscar...">
+    <button type="submit">Buscar</button>
+    <a href="?"><button type="button">Limpiar</button></a>
+  </div>
+</form>
+<br>
+<a href="{% url 'crear_servicio' %}">
+  <button type="button">Añadir Servicio</button>
+</a>
+<br>
+<br>
+<div class="datagrid">
+  <table>
+      <thead>
+          <tr>
+              <th>Nombre del Servicio</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tfoot>
+          <tr>
+              <td colspan="2">
+                  <!-- Código para paginación si lo necesitas -->
+              </td>
+          </tr>
+      </tfoot>
+      <tbody>
+          {% for servicio in servicios %}
+              {% if forloop.counter0|divisibleby:2 %}
+                  <tr class="alt">
+              {% else %}
+                  <tr>
+              {% endif %}
+                  <td>{{ servicio.nombre }}</td>
+                  <td>{{ servicio.estado }}</td>
+                  <td>
+                    <a href="{% url 'actualizar_servicio' servicio.id %}">
+                      <button type="button">Editar</button>
+                    </a>
+                    <form action="{% url 'activa_desactiva_servicio' servicio.id %}" method="post" style="display: inline;">
+                      {% csrf_token %}
+                      <button type="submit" class="btn-activar-desactivar">
+                        {% if servicio.estado == 'activo' %}
+                          Desactivar
+                        {% else %}
+                          Activar
+                        {% endif %}
+                      </button>
+                    </form>
+                  </td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+{% endblock content %}

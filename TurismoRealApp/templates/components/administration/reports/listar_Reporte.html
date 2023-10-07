@@ -1,0 +1,71 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Administración de Reportes de Ganancias
+{% endblock title %}
+
+{% block content %}
+<!-- vuelve al panel-->
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Panel de Administración</a></li>
+{% endif %}
+<br>
+<!-- Barra de búsqueda -->
+<form method="get">
+    <div class="search-wrapper">
+      <input type="text" name="q" placeholder="Buscar...">
+      <button type="submit">Buscar</button>
+      <a href="?"><button type="button">Limpiar</button></a>
+    </div>
+  </form>
+  <br>
+    <a href="{% url 'mostrar_reporte' %}">
+        <button type="button">Añadir Reporte de Ganancias</button>
+    </a>
+    <br><br>
+
+    <div class="datagrid">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha de Generación</th>
+                    <th>Tipo</th>
+                    <th>Ingresos</th>
+                    <th>Gastos</th>
+                    <th>Ganancias</th>
+                    <th>Departamento</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="8">
+                        <!-- Código para paginación si lo necesitas -->
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for informe in reporte %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        <tr class="alt">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                    <td>{{ informe.fecha_generacion }}</td>
+                    <td>{{ informe.tipo }}</td>
+                    <td>{{ informe.ingresos }}</td>
+                    <td>{{ informe.gastos }}</td>
+                    <td>{{ informe.ganancias }}</td>
+                    <td>{{ informe.dpto.nombre }}</td>
+                    <td>{{ informe.estado }}</td>
+                    <td>
+                        <a href="{% url 'mostrar_reporte' informe.id %}">Editar</a>
+                        <!-- Agrega aquí otros botones de acciones si es necesario -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

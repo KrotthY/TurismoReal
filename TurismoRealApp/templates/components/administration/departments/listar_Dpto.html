@@ -1,0 +1,72 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+Administracion departamentos
+{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated and user.is_superuser %}
+<li><a href="{% url 'panel_administracion' %}">Volver</a></li>
+{% endif %}
+<br>
+<!-- Barra de búsqueda -->
+<form method="get">
+  <div class="search-wrapper">
+    <input type="text" name="q" placeholder="Buscar...">
+    <button type="submit">Buscar</button>
+    <a href="?"><button type="button">Limpiar</button></a>
+  </div>
+</form>
+<br>
+<a href="{% url 'crear_departamento' %}">
+  <button type="button">añadir departamento</button>
+</a>
+<br>
+<br>
+<div class="datagrid">
+  <table>
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Tarifa Diaria</th>
+              <th>Dirección</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tfoot>
+          <tr>
+              <td colspan="5">
+                  <!-- Código para paginación si lo necesitas -->
+              </td>
+          </tr>
+      </tfoot>
+      <tbody>
+        {% for dpto in dptos %}
+        <tr {% if forloop.counter0|divisibleby:2 %}class="alt"{% endif %}>
+          
+            <td>{{ dpto.nombre }}</td>
+            <td>{{ dpto.descripcion }}</td>
+            <td>{{ dpto.tarifa_diaria }}</td>
+            <td>{{ dpto.direc.calle }} - {{ dpto.direc.ciudad }} - {{ dpto.direc.region }} - {{ dpto.direc.pais }}</td>
+            <td>{{ dpto.estado }}</td>
+            <td><form action="{% url 'activa_desactiva_departamento' dpto.id_dpto %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn-activar-desactivar">
+                {% if dpto.estado == 'activo' %}
+                  Desactivar
+                {% else %}
+                  Activar
+                {% endif %}
+              </button>
+            </form>
+          </td>
+        </tr>
+    {% endfor %}
+        
+      </tbody>
+  </table>
+</div>
+{% endblock content %}
