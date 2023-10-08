@@ -1,3 +1,25 @@
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
 .focus-ring-header{
-    --bs-focus-ring-color:rgba(var(--bs-light-rgb), .25)
+  --bs-focus-ring-color:rgba(var(--bs-light-rgb), .25)
+}
+
+
+
+.fixed-height {
+  height: 60px;
+  overflow-y: auto;
 }
