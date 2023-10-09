@@ -7,4 +7,53 @@ Traslado
 
 {% block content %}
 
+
+
+<div class="container mt-3 mb-3">
+  <h1 class="mb-3">Alquiler de autos</h1>
+  <div class="row">
+      <div class="col">
+          <div class="input-group mb-3">
+              <span class="input-group-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </span>
+              <input type="text" class="form-control" placeholder="Ingresa una ciudad o aeropuerto">
+          </div>
+          <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="anotherDestination">
+              <label class="form-check-label" for="anotherDestination">Devolver en otro destino</label>
+          </div>
+          <div class="input-group mb-3">
+              <span class="input-group-text">
+                <svg  width="16" height="16" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+                  <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+              </span>
+              <input type="text" class="form-control" placeholder="Retiro">
+              <select class="form-select">
+                  <option class="select-option" value="0">00:00</option><option class="select-option" value="30">00:30</option><option class="select-option" value="60">01:00</option><option class="select-option" value="90">01:30</option><option class="select-option" value="120">02:00</option><option class="select-option" value="150">02:30</option><option class="select-option" value="180">03:00</option><option class="select-option" value="210">03:30</option><option class="select-option" value="240">04:00</option><option class="select-option" value="270">04:30</option><option class="select-option" value="300">05:00</option><option class="select-option" value="330">05:30</option><option class="select-option" value="360">06:00</option><option class="select-option" value="390">06:30</option><option class="select-option" value="420">07:00</option><option class="select-option" value="450">07:30</option><option class="select-option" value="480">08:00</option><option class="select-option" value="510">08:30</option><option class="select-option" value="540">09:00</option><option class="select-option" value="570">09:30</option><option class="select-option" value="600">10:00</option><option class="select-option" value="630">10:30</option><option class="select-option" value="660">11:00</option><option class="select-option" value="690">11:30</option><option class="select-option" value="720">12:00</option><option class="select-option" value="750">12:30</option><option class="select-option" value="780">13:00</option><option class="select-option" value="810">13:30</option><option class="select-option" value="840">14:00</option><option class="select-option" value="870">14:30</option><option class="select-option" value="900">15:00</option><option class="select-option" value="930">15:30</option><option class="select-option" value="960">16:00</option><option class="select-option" value="990">16:30</option><option class="select-option" value="1020">17:00</option><option class="select-option" value="1050">17:30</option><option class="select-option" value="1080">18:00</option><option class="select-option" value="1110">18:30</option><option class="select-option" value="1140">19:00</option><option class="select-option" value="1170">19:30</option><option class="select-option" value="1200">20:00</option><option class="select-option" value="1230">20:30</option><option class="select-option" value="1260">21:00</option><option class="select-option" value="1290">21:30</option><option class="select-option" value="1320">22:00</option><option class="select-option" value="1350">22:30</option><option class="select-option" value="1380">23:00</option><option class="select-option" value="1410">23:30</option>
+              </select>
+          </div>
+          <div class="input-group mb-3">
+              <span class="input-group-text">
+                <svg  width="16" height="16" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+                  <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+              </span>
+              <input type="text" class="form-control" placeholder="Devolución">
+              <select class="form-select">
+                  <option class="select-option" value="0">00:00</option><option class="select-option" value="30">00:30</option><option class="select-option" value="60">01:00</option><option class="select-option" value="90">01:30</option><option class="select-option" value="120">02:00</option><option class="select-option" value="150">02:30</option><option class="select-option" value="180">03:00</option><option class="select-option" value="210">03:30</option><option class="select-option" value="240">04:00</option><option class="select-option" value="270">04:30</option><option class="select-option" value="300">05:00</option><option class="select-option" value="330">05:30</option><option class="select-option" value="360">06:00</option><option class="select-option" value="390">06:30</option><option class="select-option" value="420">07:00</option><option class="select-option" value="450">07:30</option><option class="select-option" value="480">08:00</option><option class="select-option" value="510">08:30</option><option class="select-option" value="540">09:00</option><option class="select-option" value="570">09:30</option><option class="select-option" value="600">10:00</option><option class="select-option" value="630">10:30</option><option class="select-option" value="660">11:00</option><option class="select-option" value="690">11:30</option><option class="select-option" value="720">12:00</option><option class="select-option" value="750">12:30</option><option class="select-option" value="780">13:00</option><option class="select-option" value="810">13:30</option><option class="select-option" value="840">14:00</option><option class="select-option" value="870">14:30</option><option class="select-option" value="900">15:00</option><option class="select-option" value="930">15:30</option><option class="select-option" value="960">16:00</option><option class="select-option" value="990">16:30</option><option class="select-option" value="1020">17:00</option><option class="select-option" value="1050">17:30</option><option class="select-option" value="1080">18:00</option><option class="select-option" value="1110">18:30</option><option class="select-option" value="1140">19:00</option><option class="select-option" value="1170">19:30</option><option class="select-option" value="1200">20:00</option><option class="select-option" value="1230">20:30</option><option class="select-option" value="1260">21:00</option><option class="select-option" value="1290">21:30</option><option class="select-option" value="1320">22:00</option><option class="select-option" value="1350">22:30</option><option class="select-option" value="1380">23:00</option><option class="select-option" value="1410">23:30</option>
+              </select>
+          </div>
+          <button class="btn btn-primary btn-lg" type="button" >Buscar</button>
+      </div>
+  </div>
+</div>
+
+
+
 {% endblock content %}
