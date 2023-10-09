@@ -1,48 +1,46 @@
 {% load static %}
 
-<header class="p-3 mb-3 border-bottom bg-dark">
+<header class="p-3 mb-3 border-bottom border-2 bg-white">
     <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
-        <a href="/" class="d-flex  mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-          <img class="me-2" width="45" height="45" src= '{% static "images/logo.png" %}'>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
-          <li><a href="{% url 'index' %}" class="nav-link fs-6 px-2 link-primary text-light focus-ring focus-ring-header text-decoration-none rounded-2">Inicio</a></li>
-          <li><a href="{% url 'galeria_departamentos' %}" class="nav-link fs-6 px-2 link-primary text-light focus-ring focus-ring-header text-decoration-none rounded-2">Departamentos</a></li>
-          <li><a href="{% url 'traslado' %}" class="nav-link fs-6 px-2 link-primary text-light focus-ring focus-ring-header text-decoration-none rounded-2">Translados</a></li>
-          <li><a href="{% url 'galeria_tours' %}" class="nav-link fs-6 px-2 link-primary text-light focus-ring focus-ring-header text-decoration-none rounded-2">Tours</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="buscar">
-          <input type="buscar" class="form-control fs-6" placeholder="Buscar..." aria-label="buscar">
-        </form>
-
-        {%if request.user.is_authenticated %}
-        <div class="dropdown text-end ">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+      <div class="d-flex align-items-center justify-content-between row ">
+        <div class="col-lg-4">
+          <a href="{% url 'index' %}" class=" mb-2 mb-lg-0 text-decoration-none">
+            <img class="me-2 h-25 w-25" src= '{% static "images/IconoTurismoReal.png" %}'>
           </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item fs-6" href="#">Configuración</a></li>
-            <li><a class="dropdown-item fs-6" href="{% url 'perfil' %}">Perfil {{user.username}}</a></li>
-            {% if request.user.is_superuser %}
-            <li><a class="dropdown-item fs-6" href="{% url 'panel_administracion' %}">Administración</a></li>
-            {% endif %}
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item fs-6" href="{% url 'logout' %}">Cerrar sesión</a></li>
-          </ul>
         </div>
+        <div class="col-lg-4">
+          <form class=" mb-3 mb-lg-0 me-lg-3" role="buscar">
+            <input type="buscar" class="form-control fs-6 w-100" placeholder="Buscar..." aria-label="buscar">
+          </form>
+        </div>
+
+        <div class="col-lg-4">
+          {%if request.user.is_authenticated %}
+          <div class="dropdown text-end ms-6 d-flex justify-content-end ">
+            <a href="#" class="link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item fs-6" href="#">Configuración</a></li>
+              <li><a class="dropdown-item fs-6" href="{% url 'perfil' %}">Perfil {{user.username}}</a></li>
+              {% if request.user.is_superuser %}
+              <li><a class="dropdown-item fs-6" href="{% url 'panel_administracion' %}">Administración</a></li>
+              {% endif %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item fs-6" href="{% url 'logout' %}">Cerrar sesión</a></li>
+            </ul>
+          </div>
           {%else%}
-              <ul class="d-flex align-items-center pt-3">
-                <li class="align-middle">
-                  <a href = "{% url 'login' %}" class="btn btn-outline-primary me-2 fs-6">Iniciar sesion</a>
-                </li>
-                <li class="align-middle">
-                  <a href="{% url 'register' %}" class="btn btn-warning fs-6">Registrate</a>
-                </li>         
-              </ul>
+          <ul class="d-flex align-items-center pt-3">
+            <li class="align-middle">
+              <a href = "{% url 'login' %}" class="btn btn-outline-primary me-2 fs-6">Iniciar sesion</a>
+            </li>
+            <li class="align-middle">
+              <a href="{% url 'register' %}" class="btn btn-warning fs-6">Registrate</a>
+            </li>         
+          </ul>
           {%endif%}
+        </div>
       </div>
     </div>
   </header>
